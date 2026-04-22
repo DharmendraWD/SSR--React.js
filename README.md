@@ -13,8 +13,6 @@
 
 -   React: Components and state
 
--   Node.js: HTTP server
+-   Express.js, Node.js: HTTP server
 
--   Babel: Transpiles JSX to JavaScript
-
--   No build tools: Live transpilation with @babel/register
+-   build tools: Vite
