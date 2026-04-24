@@ -9,7 +9,7 @@ const app = express();
 
 async function createServer() {
   const vite = await createViteServer({
-    server: { middlewareMode: true },
+    server: { middlewareMode: true, hmr: { port: 24681 } },
     appType: "custom",
   });
 
@@ -21,13 +21,9 @@ async function createServer() {
       template = await vite.transformIndexHtml(req.url, template);
 
       const { render } = await vite.ssrLoadModule("/src/entry-server.jsx");
-      const result = render();
-      const appHtml = result.html;
-      const initialState = result.initialState;
+      const appHtml = render();
 
-      const html = template
-        .replace("<!--app-html-->", appHtml)
-        .replace("</head>", `<script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script></head>`);
+      const html = template.replace("<!--app-html-->", appHtml);
 
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
