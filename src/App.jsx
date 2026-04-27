@@ -1,4 +1,5 @@
 import React from 'react'
+import { Routes, Route } from "react-router-dom";
 import './globals.css'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
@@ -12,11 +13,17 @@ import ContactForm from '../components/ContactForm'
 import FAQSection from '../components/Faq'
 import BottomSlogan from '../components/BottomSlogan'
 import Footer from '../components/Footer'
+import Home from './pages/Home';
 export default function App () {
   return (
       <div>
          <Navbar />
-       <div className='mt-20'>
+
+
+    <Routes>
+      <Route path="/" element={
+        <>
+               <div className='mt-24'>
         <Hero></Hero>
         <MessageFrom></MessageFrom>
         <Mission></Mission> 
@@ -29,6 +36,21 @@ export default function App () {
         <BottomSlogan></BottomSlogan>
         <Footer></Footer>
        </div>
+        </>
+      } />
+
+      {/* /Test page */}
+      <Route path="/test" element={
+        <>
+        <div className='mt-24'>
+          <Home></Home>
+        </div>
+        </>
+      } />
+    </Routes>
       </div>
   )
 }
+
+
+

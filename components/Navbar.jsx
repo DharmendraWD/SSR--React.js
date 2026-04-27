@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../src/image/logo.webp";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,7 +52,7 @@ export default function Navbar() {
       <nav className="mx-auto px-6 top-0 bg-blue-50 bg-[#dbeafe] py-[5px] flex justify-between items-center fixed w-full z-50 shadow-lg transition-colors duration-300">
 
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="lg:w-20 lg:h-20 w-10 h-10 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center shadow-md">
             <img className="rounded-full" src={logo} alt="logo" />
           </div>
@@ -64,7 +65,7 @@ export default function Navbar() {
               One Hydropower Limited
             </span>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="flex hideInMobile gap-8 items-center font-medium text-slate-700 dark:text-slate-300">

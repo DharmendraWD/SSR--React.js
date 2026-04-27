@@ -9,7 +9,7 @@ const app = express();
 
 async function createServer() {
   const vite = await createViteServer({
-    server: { middlewareMode: true, hmr: { port: 24681 } },
+    server: { middlewareMode: true, hmr: { port: 24682 } },
     appType: "custom",
   });
 
@@ -21,7 +21,8 @@ async function createServer() {
       template = await vite.transformIndexHtml(req.url, template);
 
       const { render } = await vite.ssrLoadModule("/src/entry-server.jsx");
-      const appHtml = render();
+      // const appHtml = render();
+      const appHtml = render(req.url);
 
       const html = template.replace("<!--app-html-->", appHtml);
 
